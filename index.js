@@ -108,19 +108,3 @@ app.post("/db/submit", function(req, res) {
       res.json(err);
     });
 });
-
-// Route to get all User's and populate them with their notes
-app.get("/db/populateduser", function(req, res) {
-  // Find all users
-  db.User.find({})
-    // Specify that we want to populate the retrieved users with any associated notes
-    .populate("posts")
-    .then(function(dbUser) {
-      // If able to successfully find and associate all Users and Notes, send them back to the client
-      res.json(dbUser);
-    })
-    .catch(function(err) {
-      // If an error occurs, send it back to the client
-      res.json(err);
-    });
-});

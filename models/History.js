@@ -13,7 +13,7 @@ var HistorySchema = new Schema({
   }
 })
 // This creates our model from the above schema, using mongoose's model method
-var History = mongoose.model('history', HistorySchema);
+var History = mongoose.model('History', HistorySchema);
 
 // Export the History model
 module.exports = History;

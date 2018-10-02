@@ -23,29 +23,29 @@
 
 <body>
   <div class="container">
+      <h1>Simple AI Bot</h1>
     <div class="row">
+        
       <div class="col-md-6">
-        <section>
-          <h1>Simple AI Bot</h1>
-          <h2>with Web Speech API</h2>
-
-          <button><i class="fa fa-microphone"></i></button>
-
-          <div>
-            <p>You said: <em class="output-you">...</em></p>
-            <p>Bot replied: <em class="output-bot">...</em></p>
-          </div>
-        </section>
+        <br><br><br><br><br>
+        <p>Bot replied: <em class="output-bot"></em></p>
+        <ul id="bot-messages"></ul>
       </div>
       <div class="col-md-6">
-        <section>
-          <ul id="messages"></ul>
-          <form action="">
-            <input id="chat-input" autocomplete="off" />
-            <button class="btn btn-sm">Send</button>
-          </form>
-        </section>
+        
+        <form action="">
+          <input id="chat-input" autocomplete="off" />
+          <button class="btn btn-sm">Send</button>
+        </form>
       </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6"></div>
+      <div class="col-md-6">
+          <p>You said: <em class="output-you"></em></p>
+          <ul id="you-messages"></ul>
+      </div>
+      <!-- <button><i class="fa fa-microphone"></i></button> -->
     </div>
   </div>
 

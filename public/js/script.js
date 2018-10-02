@@ -12,6 +12,7 @@ recognition.lang = 'en-US';
 recognition.interimResults = false;
 recognition.maxAlternatives = 1;
 
+/**************************************************************|||
 document.querySelector('button').addEventListener('click', () => {
   recognition.start();
 });
@@ -53,15 +54,26 @@ socket.on('bot reply', function(replyText) {
   if(replyText == '') replyText = '(No answer...)';
   outputBot.textContent = replyText;
 });
+|||*******************************************************/
+function chatSave(noteData) {
+    $.post("/db/submit", noteData).then(function() {
+      // stuff
+    });
+}
 
 $(function () {
   var socket = io();
-  $('form').submit(function(){
+  $('form').submit(function(event){
+    event.preventDefault();
+    var tempPhrase = $('#chat-input').val();
     socket.emit('chat message', $('#chat-input').val());
     $('#chat-input').val('');
-    return false;
+    $('#you-messages').append($('<li>').text(tempPhrase));
+    chatSave(tempPhrase);
+    //return false;
   });
-  socket.on('chat message', function(msg){
-    $('#messages').append($('<li>').text(msg));
+  socket.on('bot reply', function(msg){
+    $('#bot-messages').append($('<li>').text(msg));
+    chatSave(msg);
   });
 });
